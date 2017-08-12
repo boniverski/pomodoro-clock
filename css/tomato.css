@@ -1,0 +1,14 @@
+.tomato {
+  position: relative;
+  border: 10px solid #D73737;
+  border-radius: 50%;
+  width: 200px;
+  height: 200px; }
+  .tomato::before {
+    content: "";
+    position: absolute;
+    background: #43B748;
+    width: 50px;
+    height: 20px;
+    top: -20px;
+    left: 76px; }

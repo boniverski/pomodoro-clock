@@ -6,11 +6,33 @@
     <link rel="stylesheet" href="css/style.css">
   </head>
   <body>
+
     <div class="container">
-      <h1>Pomodoro Clock</h1>
-      <div class="clock">
-        
-      </div>
+
+      <header>Pomodoro Clock</header>
+
+      <section class="clock">
+        <section class="clock__break">
+          <span class="clock__btn" id="decrease-break">-</span>
+          <span class="clock__break-length">5</span>
+          <span class="clock__btn" id="increase-break">+</span>
+        </section>
+
+        <section class="clock__session">
+          <span class="clock__btn lower">-</span>
+          <span class="clock__session-length">5</span>
+          <span class="clock__btn higher">+</span>
+        </section>
+
+        <section class="clock__counter">
+          <div class="tomato">
+            5:00
+          </div>
+        </section>
+      </section>
+
     </div>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>
