@@ -1,14 +1,16 @@
-$(document).ready(function(){
-  var currentBreak = $(".clock__break-length").html();
-
-  $("#increase-break").on("click", function(){
-    currentBreak++;
-    $(".clock__break-length").html(currentBreak);
-  });
-
-  $("#decrease-break").on("click", function(){
-    if(currentBreak === 1) return;
-    currentBreak--;
-    $(".clock__break-length").html(currentBreak);
-  });
+new Vue ({
+  el: "#pomodoro-clock",
+  data: {
+    breakLength: 5,
+    sessionLength: 25,
+  },
+  methods: {
+    inc(property, amt){
+      this[property] += amt
+    },
+    dec(property, amt){
+      if (this[property] === 1) return
+      this[property] -= amt
+    },
+  }
 });

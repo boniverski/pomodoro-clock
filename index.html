@@ -4,35 +4,37 @@
     <meta charset="utf-8">
     <title>Pomodoro Clock</title>
     <link rel="stylesheet" href="css/style.css">
+    <script src="https://unpkg.com/vue"></script>
   </head>
   <body>
 
     <div class="container">
 
       <header>Pomodoro Clock</header>
-
-      <section class="clock">
+      <section class="clock" id="pomodoro-clock">
         <section class="clock__break">
-          <span class="clock__btn" id="decrease-break">-</span>
-          <span class="clock__break-length">5</span>
-          <span class="clock__btn" id="increase-break">+</span>
+          <p>Break Length</p>
+          <span class="clock__btn--add" v-on:click="inc('breakLength', 1)">+</span>
+          <span class="clock__break-length">{{breakLength}}</span>
+          <span class="clock__btn--subtract" v-on:click="dec('breakLength', 1)">-</span>
         </section>
 
         <section class="clock__session">
-          <span class="clock__btn lower">-</span>
-          <span class="clock__session-length">5</span>
-          <span class="clock__btn higher">+</span>
+          <p>Session Length</p>
+          <span class="clock__btn--add" id="increase-session" v-on:click="inc('sessionLength', 1)">+</span>
+          <span class="clock__session-length">{{sessionLength}}</span>
+          <span class="clock__btn--subtract" id="decrease-session" v-on:click="dec('sessionLength', 1)">-</span>
         </section>
 
         <section class="clock__counter">
           <div class="tomato">
-            5:00
+            <span class="clock__counter-time">{{sessionLength}}:00</span>
           </div>
         </section>
       </section>
 
     </div>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
   <script type="text/javascript" src="js/script.js"></script>
   </body>
 </html>
