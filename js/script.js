@@ -20,6 +20,9 @@ new Vue ({
       let ending = breakLength;
       let breaking;
       let counter;
+      let pausedCounter = false;
+      let currentCounter;
+
 
       (startCounter => {
         let startTime = new Date();
@@ -36,11 +39,15 @@ new Vue ({
           clearInterval(timer);
           counter = "0:00";
         } else {
+            if (pausedCounter === true){
+                counter = currentCounter;
+            }
             counter = niceTime(remaining);
             document.querySelector(".clock__counter-time").innerHTML = counter;
           }
         if (remaining === breakingConvert) {
           document.querySelector(".tomato").style.background = "red";
+        }
       }
 
       function niceTime(t) {
@@ -49,7 +56,11 @@ new Vue ({
         seconds = parseInt(seconds % 60);
         return `${minutes}:${seconds}`;
       }
+
+      document.querySelector(".reset").onclick = function() {
+        clearInterval(timer);
+        document.querySelector(".clock__counter-time").innerHTML = `${interval}:00`;
+      }
     }
-  }
   }
 });
