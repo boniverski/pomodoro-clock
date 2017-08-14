@@ -1,4 +1,8 @@
 .tomato {
+  bakcground: green;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
   border: 10px solid #D73737;
   border-radius: 50%;
