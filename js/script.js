@@ -1,66 +1,112 @@
-new Vue ({
-  el: "#pomodoro-clock",
-  data: {
-    breakLength: 5,
-    sessionLength: 25
-  },
-  methods: {
-    inc(property, amt){
-      if (this[property] === 25) return
-      this[property] += amt
-    },
-    dec(property, amt){
-      if (this[property] === 1) return
-      this[property] -= amt
-    },
-    setTime(sessionLength, breakLength){
-      let timer;
-      let endTime;
-      let interval = sessionLength;
-      let ending = breakLength;
-      let breaking;
-      let counter;
-      let pausedCounter = false;
-      let currentCounter;
+$(document).ready(function() {
 
+  var finishSound  = new Audio("audio/the-little-dwarf.mp3"), counter, startBreak;
+  var breakSound = new Audio ("audio/solemn.mp3");
 
-      (startCounter => {
-        let startTime = new Date();
-        endTime = new Date(startTime.getTime() + interval * 60000);
-        breaking = new Date(startTime.getTime() + ending * 60000);
-        timer = setInterval(countDown, 1000);
-      })();
+  $(".tomato").click(function() {
+    // clear old interval if exist
+      clearInterval(counter);
+      clearInterval(startBreak);
 
-      function countDown() {
-        let now = new Date();
-        let remaining = endTime - now;
-        let breakingConvert = breaking - now;
-        if (remaining <= 0) {
-          clearInterval(timer);
-          counter = "0:00";
+    // get current user define value
+    var sessionLength  = parseInt($('.sessionLength').html());
+    var breakLength = parseInt($('.breakLength').html());
+
+    sessionLength *= 60;
+
+    if (sessionLength % 60 >= 10) {
+      $(".clock__counter-time").html(Math.floor(sessionLength / 60) + ":" + sessionLength % 60);
+    } else {
+      $(".clock__counter-time").html(Math.floor(sessionLength / 60) + ":" + "0" + sessionLength % 60);
+    }
+
+    counter = setInterval(timer, 1000);
+
+    function timer() {
+      sessionLength -= 1;
+
+      if (sessionLength === 0) {
+        breakSound.play();
+        $(".tomato").css("background", "#F4A71E");
+
+        clearInterval(counter);
+        startBreak = setInterval(breakTimer, 1000);
+        breakLength *= 60;
+
+        if (breakLength % 60 >= 10) {
+          $(".clock__counter-time").html(Math.floor(breakLength / 60) + ":" + breakLength % 60);
         } else {
-            if (pausedCounter === true){
-                counter = currentCounter;
-            }
-            counter = niceTime(remaining);
-            document.querySelector(".clock__counter-time").innerHTML = counter;
-          }
-        if (remaining === breakingConvert) {
-          document.querySelector(".tomato").style.background = "red";
+          $(".clock__counter-time").html(Math.floor(breakLength / 60) + ":" + "0" + breakLength % 60);
+        }
+
+      } else if (sessionLength % 60 >= 10) {
+        $(".clock__counter-time").html(Math.floor(sessionLength / 60) + ":" + sessionLength % 60);
+      } else {
+        $(".clock__counter-time").html(Math.floor(sessionLength / 60) + ":" + "0" + sessionLength % 60);
+      }
+
+      // Run when counter is over
+      function breakTimer() {
+        breakLength -= 1;
+
+        if (breakLength === 0) {
+            finishSound.play();
+            clearInterval(startBreak);
+            $(".tomato").css("background", "#EE543D");
+            $(".clock__counter-time").html("0:00");
+        } else if (breakLength % 60 >= 10) {
+            $(".clock__counter-time").html(Math.floor(breakLength / 60) + ":" + breakLength % 60);
+        } else {
+            $(".clock__counter-time").html(Math.floor(breakLength / 60) + ":" + "0" + breakLength % 60);
         }
       }
-
-      function niceTime(t) {
-        let seconds = t / 1000;
-        let minutes = parseInt(seconds / 60);
-        seconds = parseInt(seconds % 60);
-        return `${minutes}:${seconds}`;
-      }
-
-      document.querySelector(".reset").onclick = function() {
-        clearInterval(timer);
-        document.querySelector(".clock__counter-time").innerHTML = `${interval}:00`;
-      }
     }
-  }
+  });
+
+  // Handling a Reset button's logic
+  $(".clock__reset").click(function() {
+    $('.breakLength').html('5');
+    $('.sessionLength').html('25');
+    $('.clock__counter-time').html('25:00');
+    $("#breakTimeAlert").hide();
+    $(".tomato").css("background", "#43B748");
+
+    clearInterval(counter);
+    clearInterval(startBreak);
+  });
+
+  // Handling increament/decreament buttons
+  $('#lessBreak').on('click', function() {
+    var breakLength = parseInt($('.breakLength').html());
+    if (breakLength > 1) {
+      breakLength -= 1;
+    }
+    $('.breakLength').html(breakLength);
+  });
+
+  $('#moreBreak').on('click', function() {
+    var breakLength = parseInt($('.breakLength').html());
+    if(breakLength <= 24) {
+      breakLength += 1;
+    }
+    $('.breakLength').html(breakLength);
+  });
+
+  $('#lessSession').on('click', function() {
+    var sessionLength  = parseInt($('.sessionLength').html());
+    if (sessionLength >1 && sessionLength <=25 ) {
+      sessionLength -= 1;
+      $('.clock__counter-time').html(sessionLength +':00');
+    }
+    $('.sessionLength').html(sessionLength);
+  });
+
+  $('#moreSession').on('click', function() {
+    var sessionLength  = parseInt($('.sessionLength').html());
+    if(sessionLength <= 24) {
+      sessionLength += 1;
+    }
+    $('.sessionLength').html(sessionLength);
+    $('.clock__counter-time').html(sessionLength +':00');
+  });
 });

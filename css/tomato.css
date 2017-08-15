@@ -1,18 +1,51 @@
 .tomato {
-  bakcground: green;
+  position: absolute;
+  background: #43B748;
+  color: white;
+  font-family: "Oswald";
+  font-size: 2.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   position: relative;
-  border: 10px solid #D73737;
   border-radius: 50%;
-  width: 200px;
-  height: 200px; }
+  width: 180px;
+  height: 163px;
+  cursor: pointer;
+  z-index: 10; }
   .tomato::before {
     content: "";
     position: absolute;
-    background: #43B748;
-    width: 50px;
-    height: 20px;
-    top: -20px;
-    left: 76px; }
+    border: 1px solid #32883C;
+    border-radius: 50%;
+    border-width: 0 0 10px 0;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    width: 80px;
+    height: 50px;
+    top: -48px;
+    left: 52px;
+    z-index: 3; }
+  .tomato::after {
+    content: "";
+    position: absolute;
+    border: 3px solid #32883C;
+    border-radius: 50%;
+    border-width: 0 0 10px 0;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%;
+    width: 55px;
+    height: 50px;
+    top: -50px;
+    left: 65px;
+    z-index: 3; }
+  .tomato .pedicle {
+    position: absolute;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-right: 10px solid #195836;
+    height: 10px;
+    top: -19px;
+    right: 82px;
+    transform: rotate(15deg);
+    z-index: 0; }
