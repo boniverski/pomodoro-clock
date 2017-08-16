@@ -29,16 +29,16 @@
   .tomato::after {
     content: "";
     position: absolute;
-    border: 3px solid #32883C;
+    border: 3px solid #2c7c33;
     border-radius: 50%;
     border-width: 0 0 10px 0;
     border-bottom-right-radius: 50%;
     border-bottom-left-radius: 50%;
     width: 55px;
     height: 50px;
-    top: -50px;
+    top: -49px;
     left: 65px;
-    z-index: 3; }
+    z-index: 2; }
   .tomato .pedicle {
     position: absolute;
     border-top: 10px solid transparent;

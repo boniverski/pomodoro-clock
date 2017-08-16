@@ -29,16 +29,16 @@
   .tomato::after {
     content: "";
     position: absolute;
-    border: 3px solid #32883C;
+    border: 3px solid #2c7c33;
     border-radius: 50%;
     border-width: 0 0 10px 0;
     border-bottom-right-radius: 50%;
     border-bottom-left-radius: 50%;
     width: 55px;
     height: 50px;
-    top: -50px;
+    top: -49px;
     left: 65px;
-    z-index: 3; }
+    z-index: 2; }
   .tomato .pedicle {
     position: absolute;
     border-top: 10px solid transparent;
@@ -50,12 +50,16 @@
     transform: rotate(15deg);
     z-index: 0; }
 
+/* Variables */
+/*******************************/
 html, body {
   height: 100%;
   margin: 0;
   color: darkgreen; }
 
 .container {
+  background-image: url("http://i.imgur.com/07DqtIv.jpg");
+  background-repeat: repeat;
   font-family: "Oswald", sans-serif;
   width: 100%;
   height: 100%;
@@ -64,22 +68,17 @@ html, body {
   align-items: center;
   justify-content: center; }
 
-header {
-  color: darkgreen;
-  font-family: "Leckerli One";
-  font-size: 2.5em;
-  margin-bottom: 0.5em; }
-
 .clock {
   background: #edffa0;
   border: 10px solid #96C93D;
   border-radius: 5%;
-  width: 400px;
-  height: 400px;
+  min-width: 400px;
+  min-height: 400px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  text-align: center; }
+  text-align: center;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1), 0 1px 10px rgba(0, 0, 0, 0.2); }
   .clock__break {
     flex: 1;
     display: flex;
@@ -108,7 +107,7 @@ header {
     .clock .btn:active {
       background: #d5f49c; }
   .clock .length {
-    font-size: 1.4em;
+    font-size: 1.5em;
     border-radius: 15%;
     margin: 0.1em auto;
     width: 30px; }
