@@ -52,6 +52,7 @@
 
 /* Variables */
 /*******************************/
+/********* Base style **********/
 html, body {
   height: 100%;
   margin: 0;
@@ -68,6 +69,7 @@ html, body {
   align-items: center;
   justify-content: center; }
 
+/*********************************/
 .clock {
   background: #edffa0;
   border: 10px solid #96C93D;
@@ -116,7 +118,10 @@ html, body {
     color: white;
     background: #EE543D;
     margin-top: 1.5em;
-    padding: 0.3em 1.6em;
-    border-radius: 0.255em; }
+    padding: 0.2em 2em 0 2em;
+    border: 1px solid transparent;
+    border-width: 0 0 10px 0;
+    border-bottom-right-radius: 50%;
+    border-bottom-left-radius: 50%; }
     .clock .clock__reset:active {
       background: #C2523E; }

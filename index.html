@@ -11,29 +11,29 @@
   <body>
 
     <div class="container">
-
       <section class="clock" id="pomodoro-clock">
+
         <section class="clock__break">
-          <span id="moreBreak" class="btn">+</span>
+          <span id="addBreak" class="btn" title="Longer Break">+</span>
           <span class="length breakLength" title="Break Length">5</span>
-          <span id="lessBreak" class="btn">-</span>
+          <span id="subtractBreak" class="btn" title="Lower Break">-</span>
         </section> <!-- End Break secton -->
 
         <section class="clock__session">
-          <span id="moreSession" class="btn add" id="increase-session">+</span>
-          <span class="length sessionLength">25</span>
-          <span id="lessSession" class="btn" id="decrease-session">-</span>
+          <span id="addSession" class="btn" id="increase-session" title="Longer Session">+</span>
+          <span class="length sessionLength" title="Session Length">25</span>
+          <span id="subtractSession" class="btn" id="decrease-session" title="Lower Session">-</span>
         </section> <!-- End Session secton -->
 
-        <section id="clock" class="clock__counter" title="Make this tomate red!">
-          <div class="tomato">
+        <section class="clock__counter">
+          <div class="tomato" title="Make this tomate red!">
             <div class="pedicle"></div>
             <p class="clock__counter-time">25:00</p>
           </div> <!-- End Tomato secton -->
-          <span class="clock__reset" title="Reset the counter">Reset</span>
+          <span class="clock__reset">Reset</span>
         </section> <!-- End Counter secton -->
-      </section>
 
+      </section> <!-- End Clock section -->
     </div> <!-- End Container secton -->
 
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
