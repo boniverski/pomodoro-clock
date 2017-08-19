@@ -4,13 +4,20 @@
 * Description: Simple counter with break alerts
 */
 
+/* Title: Pomodoro Clock v1 (for freeCodeCamp), August 2017
+* Author: Boško Rabrenović
+* https://github.com/boniverski/pomodoro-clock
+* Description: Simple counter with break alerts
+*/
+
 $(document).ready(function() {
 
   var counter,
       startBreak,
-      notification = new Audio ("audio/solemn.mp3");
+      notification = new Audio ("https://raw.githubusercontent.com/boniverski/pomodoro-clock/master/audio/solemn.mp3");
 
   $(".tomato").on("click", function startCounting() {
+    notification.play();
     // Clear old interval if exist
     clearInterval(counter);
     clearInterval(startBreak);

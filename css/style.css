@@ -1,58 +1,4 @@
-.tomato {
-  position: absolute;
-  background: #43B748;
-  color: white;
-  font-family: "Oswald";
-  font-size: 2.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-  border-radius: 50%;
-  width: 180px;
-  height: 163px;
-  cursor: pointer;
-  z-index: 10; }
-  .tomato::before {
-    content: "";
-    position: absolute;
-    border: 1px solid #32883C;
-    border-radius: 50%;
-    border-width: 0 0 10px 0;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    width: 80px;
-    height: 50px;
-    top: -48px;
-    left: 52px;
-    z-index: 3; }
-  .tomato::after {
-    content: "";
-    position: absolute;
-    border: 3px solid #2c7c33;
-    border-radius: 50%;
-    border-width: 0 0 10px 0;
-    border-bottom-right-radius: 50%;
-    border-bottom-left-radius: 50%;
-    width: 55px;
-    height: 50px;
-    top: -49px;
-    left: 65px;
-    z-index: 2; }
-  .tomato .pedicle {
-    position: absolute;
-    border-top: 10px solid transparent;
-    border-bottom: 10px solid transparent;
-    border-right: 10px solid #195836;
-    height: 10px;
-    top: -19px;
-    right: 82px;
-    transform: rotate(15deg);
-    z-index: 0; }
-
-/* Variables */
-/*******************************/
-/********* Base style **********/
+/* BASE STYLE */
 html, body {
   height: 100%;
   margin: 0;
@@ -69,7 +15,7 @@ html, body {
   align-items: center;
   justify-content: center; }
 
-/*********************************/
+/* CLOCK STYLE */
 .clock {
   background: #edffa0;
   border: 10px solid #96C93D;
